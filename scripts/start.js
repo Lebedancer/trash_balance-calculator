@@ -152,7 +152,7 @@ function onProxyError(proxy) {
   }
 }
 
-function addMiddleware(devServer) {
+function addMiddleware(devServer, compiler) {
   // `proxy` lets you to specify a fallback server during development.
   // Every unrecognized request will be forwarded to it.
   var proxy = require(paths.appPackageJson).proxy;
@@ -206,7 +206,10 @@ function addMiddleware(devServer) {
       ws: true,
       xfwd: true
     });
-    devServer.use(mayProxy, hpm);
+
+
+
+
 
     // Listen for the websocket 'upgrade' event and upgrade the connection.
     // If this is not done, httpProxyMiddleware will not try to upgrade until
@@ -214,12 +217,20 @@ function addMiddleware(devServer) {
     devServer.listeningApp.on('upgrade', hpm.upgrade);
   }
 
+    devServer.use(mayProxy, hpm);
+    devServer.use(require("webpack-dev-middleware")(compiler, {
+        noInfo: true, publicPath: config.output.publicPath
+    }));
+    devServer.use(require('webpack-hot-middleware')(compiler));
+
   // Finally, by now we have certainly resolved the URL.
   // It may be /index.html, so let the dev server try serving it again.
   devServer.use(devServer.middleware);
 }
 
 function runDevServer(host, port, protocol) {
+
+
   var devServer = new WebpackDevServer(compiler, {
     // Enable gzip compression of generated files.
     compress: true,
@@ -246,7 +257,7 @@ function runDevServer(host, port, protocol) {
     // updated. The WebpackDevServer client is included as an entry point
     // in the Webpack development configuration. Note that only changes
     // to CSS are currently hot reloaded. JS changes will refresh the browser.
-    hot: true,
+    // hot: true,
     // It is important to tell WebpackDevServer to use the same "root" path
     // as we specified in the config. In development, we always serve from /.
     publicPath: config.output.publicPath,
@@ -264,7 +275,7 @@ function runDevServer(host, port, protocol) {
   });
 
   // Our custom middleware proxies requests to /index.html or a remote API.
-  addMiddleware(devServer);
+  addMiddleware(devServer, compiler);
 
   // Launch WebpackDevServer.
   devServer.listen(port, err => {
