@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import LabeledInput from '../LabeledInput';
 import style from './style.less';
+import { observer } from 'mobx-react'
+import Store from '../../Store';
 
 class Section extends Component {
-  render() {
-      return (
-        <div>
-            <LabeledInput title="Безнал"/>
-            <LabeledInput title="Наличные"/>
-            <LabeledInput title="Другая карта"/>
-        </div>
-    );
-  }
+    constructor() {
+        super();
+        this.store = new Store();
+    }
+
+    render() {
+        const { cash, nonCash, other }  = this.store.own;
+
+        return (
+            <div>
+                <LabeledInput title="Безнал" value={nonCash}/>
+                <LabeledInput title="Наличные" value={cash}/>
+                <LabeledInput title="Другая карта" value={other}/>
+            </div>
+        );
+    }
 }
 
-export default Section;
+export default observer(Section);

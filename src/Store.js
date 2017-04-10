@@ -1,4 +1,4 @@
-import {observable, computed} from "mobx";
+import { observable, computed } from "mobx";
 
 class Store {
     @observable own = {
@@ -12,7 +12,11 @@ class Store {
     };
 
     @computed get totalOwn() {
-        return 1;
+        return {
+            cash: this.own.cash,
+            nonCash: this.own.nonCash,
+            other: this.own.other
+        };
     }
 
     @computed get totalCollective() {
