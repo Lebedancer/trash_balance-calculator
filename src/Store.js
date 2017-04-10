@@ -7,8 +7,8 @@ class Store {
         other: 0,
     };
     @observable collective = {
-        cash: '',
-        nonCash: ''
+        cash: 0,
+        nonCash: 0
     };
 
     @computed get totalOwn() {
@@ -16,7 +16,10 @@ class Store {
     }
 
     @computed get totalCollective() {
-        return this.price * this.amount;
+        return {
+            cash: 1,
+            nonCash: 2
+        };
     }
 }
 

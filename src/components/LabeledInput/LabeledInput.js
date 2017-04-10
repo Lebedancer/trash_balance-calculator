@@ -11,12 +11,12 @@ class Section extends Component {
     }
 
     _getRow() {
-        const { readonly } = this.props;
+        const { readonly, value } = this.props;
 
         if (readonly) {
-            return <span></span>
+            return <span>{value}</span>
         } else {
-            return <input className={style.labeledInput__input} type="text"/>
+            return <input className={style.labeledInput__input} type="text" value={value}/>
         }
     }
 
