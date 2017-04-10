@@ -1,15 +1,38 @@
 .section {
     font-family: Helvetica, Arial, sans-serif;
-    display: inline-block;
     box-sizing: border-box;
     width: 300px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    vertical-align: top;
+    margin: 0 10px;
+    transition: box-shadow 0.25s linear;
+
+    &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
 }
+
+.section--block {
+    width: 620px;
+    margin-bottom: 20px;
+}
+
 
 .section__title {
     border-bottom: 1px solid #c7c7c7;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+
     &:empty {
         display: none;
+    }
+}
+
+.section--opposite {
+    background: #000;
+
+    .section__title {
+        color: white;
     }
 }
