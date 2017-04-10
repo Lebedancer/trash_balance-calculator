@@ -5,11 +5,9 @@ class Store {
         cash: 0,
         nonCash: 0,
         other: 0,
-
-        setField: action(function(field, val) {
-            this[field] = val;
-        })
     };
+
+    @observable test = 0;
     @observable collective = {
         cash: 0,
         nonCash: 0
@@ -36,8 +34,8 @@ class Store {
         };
     }
 
-    updateOwn(...params) {
-        this.own.setField(...params);
+    updateOwn(field, value) {
+        this.own[field] = value;
     }
 }
 

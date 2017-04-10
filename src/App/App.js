@@ -12,7 +12,6 @@ import Store from '../Store'
 class App extends Component {
     constructor() {
         super();
-
         this.store = new Store();
     }
 
@@ -21,7 +20,7 @@ class App extends Component {
             <div className={style.app}>
                 <section className={style['app__line']}>
                     <Section title="Личное">
-                        <OwnBalance/>
+                        <OwnBalance store={this.store}/>
                     </Section>
                     <Section title="Общественное">
                         <CollectiveBalance/>
@@ -32,7 +31,7 @@ class App extends Component {
                 </Section>
                 <section className={style['app__line']}>
                     <Section isOpposite={true} title="Вернуть личное">
-                        <OwnResult/>
+                        <OwnResult store={this.store}/>
                     </Section>
                     <Section isOpposite={true} title="Вернуть общественное">
                         <CollectiveResult />
@@ -43,4 +42,4 @@ class App extends Component {
     }
 }
 
-export default observer(App);
+export default App;

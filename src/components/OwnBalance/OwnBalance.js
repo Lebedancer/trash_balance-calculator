@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import LabeledInput from '../LabeledInput';
 import style from './style.less';
 import { observer } from 'mobx-react'
-import Store from '../../Store';
 
 class Section extends Component {
-    constructor() {
+    constructor({ store }) {
         super();
-        this.store = new Store();
+
+        this.store = store;
     }
 
     _onChangeNonCash = (e) => {
