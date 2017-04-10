@@ -5,7 +5,6 @@ class Section extends Component {
   render() {
     return (
         <div className={style.section}>
-            <div className={style.section__title}></div>
             {this.props.children}
         </div>
     );

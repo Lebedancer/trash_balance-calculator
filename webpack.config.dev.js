@@ -27,7 +27,7 @@ export default {
         loaders: [
             {
                 test: /\.less$/,
-                loader: 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap'
+                loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap'
             },
             { test: /\.js$/, include: path.join(__dirname, 'src'), loader: 'babel' },
             { test: /(\.css)$/, loaders: ['style', 'css'] },
