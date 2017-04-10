@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Section from '../components/Section';
+import LabeledInput from '../components/LabeledInput';
 import style from './style.less';
 
 class App extends Component {
@@ -7,14 +8,16 @@ class App extends Component {
     return (
         <div>
             <Section>
-                <input type="text"/>
+                <LabeledInput title="Безнал"/>
+                <LabeledInput title="Наличные"/>
+                <LabeledInput title="Другая карта"/>
             </Section>
-            <section className={style.ownSection}>
+            <Section>
                 не моя
-            </section>
-            <section className={style.ownSection}>
+            </Section>
+            <Section className={style.ownSection}>
                 реально
-            </section>
+            </Section>
             <section className={style.ownSection}>
                 Итого
             </section>
