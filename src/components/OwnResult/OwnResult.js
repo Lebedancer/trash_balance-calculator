@@ -12,11 +12,11 @@ class Section extends Component {
     }
 
     render() {
-        const { cash, nonCash, other }  = this.store.own;
-
+        const { cash, nonCash, other } = this.store.totalOwn;
+        debugger;
         return (
             <div>
-                <LabeledInput isOpposite={true} readonly={true} title="Безнал" value={nonCash}/>
+                <LabeledInput isOpposite={true} readonly={true} title="Безнал" value={nonCash} />
                 <LabeledInput isOpposite={true} readonly={true} title="Наличные" value={cash}/>
                 <LabeledInput isOpposite={true} readonly={true} title="Другая карта" value={other}/>
             </div>

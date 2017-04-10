@@ -10,12 +10,17 @@ class Section extends Component {
         this.store = new Store();
     }
 
+    _onChangeNonCash = (e) => {
+        const val = parseFloat(e.target.value) || 0;
+        this.store.updateOwn('nonCash', val);
+    }
+
     render() {
         const { cash, nonCash, other }  = this.store.own;
 
         return (
             <div>
-                <LabeledInput title="Безнал" value={nonCash}/>
+                <LabeledInput title="Безнал" value={nonCash} onChange={this._onChangeNonCash}/>
                 <LabeledInput title="Наличные" value={cash}/>
                 <LabeledInput title="Другая карта" value={other}/>
             </div>
