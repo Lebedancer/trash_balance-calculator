@@ -7,6 +7,7 @@ import OwnBalance from '../components/OwnBalance';
 import OwnResult from '../components/OwnResult';
 import style from './style.less';
 import {observer} from 'mobx-react'
+import DevTools from 'mobx-react-devtools';
 import Store from '../Store'
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
     render() {
         return (
             <div className={style.app}>
+                <DevTools />
                 <section className={style['app__line']}>
                     <Section title="Личное">
                         <OwnBalance store={this.store}/>
