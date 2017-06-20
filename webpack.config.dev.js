@@ -32,7 +32,7 @@ export default {
                 use: [
                     'style-loader',
                     {
-                        loader: 'css-loader', query : {
+                        loader: 'css-loader', query: {
                         modules: true,
                         importLoaders: 1,
                         localIdentName: '[name]__[local]___[hash:base64:5]',
