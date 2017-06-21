@@ -28,7 +28,7 @@ class App extends Component {
                         <OwnBalance store={this.store}/>
                     </Section>
                     <Section title="Общественное">
-                        <CollectiveBalance/>
+                        <CollectiveBalance store={this.store}/>
                     </Section>
                 </section>
 
@@ -37,7 +37,7 @@ class App extends Component {
                         <OwnResult store={this.store}/>
                     </Section>
                     <Section isOpposite={true} title="Вернуть общественное">
-                        <CollectiveResult />
+                        <CollectiveResult  store={this.store}/>
                     </Section>
                 </section>
             </div>

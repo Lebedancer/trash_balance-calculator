@@ -24,7 +24,7 @@ class Section extends Component {
     _onChange = (e) => {
         const val = parseFloat(e.target.value) || 0;
         const { type, onChange } = this.props;
-        debugger;
+
         return onChange({ val, type })
     }
 

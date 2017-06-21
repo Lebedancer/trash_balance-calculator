@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import LabeledInput from '../LabeledInput';
 import style from './style.less';
-import Store from '../../Store';
 import {observer} from 'mobx-react'
 
 class Section extends Component {
-    constructor() {
+    constructor({ store }) {
         super();
-        this.store = new Store();
+        this.store = store;
     }
 
     render() {

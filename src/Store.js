@@ -19,12 +19,6 @@ class Store {
         tinkoffCash: 0,
     };
 
-    // @observable totalOwn = {
-    //     cash: this.own.cash,
-    //     nonCash: this.own.nonCash,
-    //     other: this.own.other
-    // };
-
     @computed get totalOwn() {
         return {
             nonCash: this.real.alpha - this.own.nonCash,
@@ -35,8 +29,8 @@ class Store {
 
     @computed get totalCollective() {
         return {
-            cash: 1,
-            nonCash: 2
+            nonCash: this._getCollectiveNonCash(),
+            cash: this.real.tinkoffCash - this.collective.cash,
         };
     }
 
@@ -44,8 +38,20 @@ class Store {
         this.own[field] = value;
     }
 
+    updateCollective(field, value) {
+        this.collective[field] = value;
+    }
+
     updateReal(field, value) {
         this.real[field] = value;
+    }
+
+    _getCollectiveNonCash() {
+        const collectiveSum = this.collective.nonCash;
+        const ownOtherSum = this.own.other;
+        const realTinkoff = this.real.tinkoff;
+
+        return realTinkoff - ownOtherSum - collectiveSum;
     }
 }
 

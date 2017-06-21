@@ -9,8 +9,7 @@ class Section extends Component {
         this.store = store;
     }
 
-
-    _onChangeNonCash = ({ val, type}) => {
+    _onChange = ({ val, type}) => {
         this.store.updateReal(type, val);
     }
 
@@ -19,10 +18,11 @@ class Section extends Component {
 
         return (
             <div className={style.labeledInput}>
-                <LabeledInput type="alpha" title="Альфа" value={alpha} onChange={this._onChangeNonCash}/>
-                <LabeledInput title="Тинкофф" value={tinkoff}/>
-                <LabeledInput title="Альфа-нал" value={alphaCash}/>
-                <LabeledInput title="Тинкофф-нал" value={tinkoffCash}/>
+                <h2>Есть сейчас</h2>
+                <LabeledInput type="alpha" title="Альфа" value={alpha} onChange={this._onChange}/>
+                <LabeledInput type="tinkoff" title="Тинкофф" value={tinkoff}  onChange={this._onChange}/>
+                <LabeledInput type="alphaCash" title="Альфа-нал" value={alphaCash}  onChange={this._onChange}/>
+                <LabeledInput type="tinkoffCash" title="Тинкофф-нал" value={tinkoffCash}  onChange={this._onChange}/>
             </div>
         );
     }
