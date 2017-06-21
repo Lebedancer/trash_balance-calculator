@@ -18,7 +18,6 @@ class Section extends Component {
 
         return (
             <div className={style.labeledInput}>
-                <h2>Есть сейчас</h2>
                 <LabeledInput type="alpha" title="Альфа" value={alpha} onChange={this._onChange}/>
                 <LabeledInput type="tinkoff" title="Тинкофф" value={tinkoff}  onChange={this._onChange}/>
                 <LabeledInput type="cash" title="Наличные" value={cash}  onChange={this._onChange}/>

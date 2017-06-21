@@ -21,22 +21,10 @@ class Store {
     @computed get return() {
         return {
             cash: this.real.cash - Math.abs(this.collective.cash - this.own.cash),
-            tinkoff: this.real.tinkoff - Math.abs(this.collective.nonCash - this.own.other)
+            tinkoff: this.real.tinkoff - Math.abs(this.collective.nonCash - this.own.other),
+            alpha: this.real.alpha - Math.abs(this.own.nonCash)
         }
     };
-
-    @computed get totalOwn() {
-        return {
-            nonCash: this.real.alpha - Math.abs(this.own.nonCash),
-            other: this.own.other
-        };
-    }
-
-    @computed get totalCollective() {
-        return {
-            nonCash: this._getCollectiveNonCash()
-        };
-    }
 
     updateOwn(field, value) {
         this.own[field] = value;
@@ -48,14 +36,6 @@ class Store {
 
     updateReal(field, value) {
         this.real[field] = value;
-    }
-
-    _getCollectiveNonCash() {
-        const collectiveSum = this.collective.nonCash;
-        const ownOtherSum = this.own.other;
-        const realTinkoff = this.real.tinkoff;
-
-        return realTinkoff - Math.abs(ownOtherSum - collectiveSum);
     }
 }
 

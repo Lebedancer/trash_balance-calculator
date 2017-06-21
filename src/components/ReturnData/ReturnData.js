@@ -14,10 +14,11 @@ class Section extends Component {
     }
 
     render() {
-        const { cash, tinkoff }= this.store.return;
+        const { cash, tinkoff, alpha }= this.store.return;
 
         return (
             <div className={style.labeledInput}>
+                <LabeledInput isOpposite={true} readonly={true} type="cash" title="Альфа" value={alpha}  onChange={this._onChange}/>
                 <LabeledInput isOpposite={true} readonly={true} type="cash" title="Наличные" value={cash}  onChange={this._onChange}/>
                 <LabeledInput isOpposite={true} readonly={true} type="tinkoff" title="Тинкофф" value={tinkoff}  onChange={this._onChange}/>
             </div>
