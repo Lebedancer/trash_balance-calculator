@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Section from '../components/Section';
+import Section from '../components/common/Section';
 import RealData from '../components/RealData';
-import CollectiveBalance from '../components/CollectiveBalance';
-import CollectiveResult from '../components/CollectiveResult';
-import OwnBalance from '../components/OwnBalance';
-import OwnResult from '../components/OwnResult';
+import CashData from '../components/CashData';
+import CollectiveBalance from '../components/balance/CollectiveBalance';
+import CollectiveResult from '../components/result/CollectiveResult';
+import OwnBalance from '../components/balance/OwnBalance';
+import OwnResult from '../components/result/OwnResult';
 import style from './style.less';
-import {observer} from 'mobx-react'
+
 import DevTools from 'mobx-react-devtools';
 import Store from '../Store'
 
@@ -40,6 +41,9 @@ class App extends Component {
                         <CollectiveResult  store={this.store}/>
                     </Section>
                 </section>
+                <Section isBlock={true} isOpposite={true}>
+                    <CashData store={this.store}/>
+                </Section>
             </div>
         );
     }

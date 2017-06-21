@@ -15,22 +15,23 @@ class Store {
     @observable real = {
         alpha: 0,
         tinkoff: 0,
-        alphaCash: 0,
-        tinkoffCash: 0,
+        cash: 0,
+    };
+
+    @computed get cash() {
+        return this.real.cash - this.collective.cash -  this.own.cash;
     };
 
     @computed get totalOwn() {
         return {
             nonCash: this.real.alpha - this.own.nonCash,
-            cash: this.real.alphaCash - this.own.cash,
             other: this.own.other
         };
     }
 
     @computed get totalCollective() {
         return {
-            nonCash: this._getCollectiveNonCash(),
-            cash: this.real.tinkoffCash - this.collective.cash,
+            nonCash: this._getCollectiveNonCash()
         };
     }
 

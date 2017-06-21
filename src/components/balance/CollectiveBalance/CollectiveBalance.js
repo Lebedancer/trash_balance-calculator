@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LabeledInput from '../LabeledInput';
+import LabeledInput from '../../common/LabeledInput';
 import style from './style.less';
 
 class Section extends Component {

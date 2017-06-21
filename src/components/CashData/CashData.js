@@ -14,14 +14,11 @@ class Section extends Component {
     }
 
     render() {
-        const { alpha, tinkoff, cash }  = this.store.real;
+        const cash = this.store.cash;
 
         return (
             <div className={style.labeledInput}>
-                <h2>Есть сейчас</h2>
-                <LabeledInput type="alpha" title="Альфа" value={alpha} onChange={this._onChange}/>
-                <LabeledInput type="tinkoff" title="Тинкофф" value={tinkoff}  onChange={this._onChange}/>
-                <LabeledInput type="cash" title="Наличные" value={cash}  onChange={this._onChange}/>
+                <LabeledInput isOpposite={true} readonly={true} type="cash" title="Наличные" value={cash}  onChange={this._onChange}/>
             </div>
         );
     }
