@@ -2,15 +2,21 @@ import { observable, computed, action } from "mobx";
 
 class Store {
     @observable own = {
-        cash: 0,
         nonCash: 0,
+        cash: 0,
         other: 0,
     };
 
-    @observable test = 0;
     @observable collective = {
-        cash: 0,
-        nonCash: 0
+        nonCash: 0,
+        cash: 0
+    };
+
+    @observable real = {
+        alpha: 0,
+        tinkoff: 0,
+        alphaCash: 0,
+        tinkoffCash: 0,
     };
 
     // @observable totalOwn = {
@@ -21,8 +27,8 @@ class Store {
 
     @computed get totalOwn() {
         return {
-            cash: this.own.cash,
-            nonCash: this.own.nonCash,
+            nonCash: this.real.alpha - this.own.nonCash,
+            cash: this.real.alphaCash - this.own.cash,
             other: this.own.other
         };
     }
@@ -36,6 +42,10 @@ class Store {
 
     updateOwn(field, value) {
         this.own[field] = value;
+    }
+
+    updateReal(field, value) {
+        this.real[field] = value;
     }
 }
 

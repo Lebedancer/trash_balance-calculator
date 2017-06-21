@@ -10,9 +10,8 @@ class Section extends Component {
         this.store = store;
     }
 
-    _onChangeNonCash = (e) => {
-        const val = parseFloat(e.target.value) || 0;
-        this.store.updateOwn('nonCash', val);
+    _onChangeVal = ({ val, type }) => {
+        this.store.updateOwn(type, val);
     }
 
     render() {
@@ -20,9 +19,9 @@ class Section extends Component {
 
         return (
             <div>
-                <LabeledInput title="Безнал" value={nonCash} onChange={this._onChangeNonCash}/>
-                <LabeledInput title="Наличные" value={cash}/>
-                <LabeledInput title="Другая карта" value={other}/>
+                <LabeledInput title="Безнал" type='nonCash' value={nonCash} onChange={this._onChangeVal}/>
+                <LabeledInput title="Наличные"  type='cash' value={cash} onChange={this._onChangeVal}/>
+                <LabeledInput title="Другая карта" type='other' value={other} onChange={this._onChangeVal}/>
             </div>
         );
     }

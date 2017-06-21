@@ -11,13 +11,21 @@ class Section extends Component {
     }
 
     _getRow() {
-        const { readonly, value, onChange } = this.props;
+        const { readonly, value } = this.props;
+        const textClass = value > 0 ? style['labeledInput__text--positive'] : style['labeledInput__text--negative'];
 
         if (readonly) {
-            return <span>{value}</span>
+            return <span className={textClass}>{value}</span>
         } else {
-            return <input className={style.labeledInput__input} type="text" value={value} onChange={onChange}/>
+            return <input className={style.labeledInput__input} type="text" value={value} onChange={this._onChange}/>
         }
+    }
+
+    _onChange = (e) => {
+        const val = parseFloat(e.target.value) || 0;
+        const { type, onChange } = this.props;
+        debugger;
+        return onChange({ val, type })
     }
 
     render() {

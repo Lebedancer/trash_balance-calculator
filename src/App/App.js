@@ -20,6 +20,9 @@ class App extends Component {
         return (
             <div className={style.app}>
                 <DevTools />
+                <Section isBlock={true}>
+                    <RealData store={this.store}/>
+                </Section>
                 <section className={style['app__line']}>
                     <Section title="Личное">
                         <OwnBalance store={this.store}/>
@@ -28,9 +31,7 @@ class App extends Component {
                         <CollectiveBalance/>
                     </Section>
                 </section>
-                <Section isBlock={true}>
-                    <RealData/>
-                </Section>
+
                 <section className={style['app__line']}>
                     <Section isOpposite={true} title="Вернуть личное">
                         <OwnResult store={this.store}/>
