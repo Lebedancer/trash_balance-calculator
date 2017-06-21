@@ -18,13 +18,16 @@ class Store {
         cash: 0,
     };
 
-    @computed get cash() {
-        return this.real.cash - this.collective.cash -  this.own.cash;
+    @computed get return() {
+        return {
+            cash: this.real.cash - Math.abs(this.collective.cash - this.own.cash),
+            tinkoff: this.real.tinkoff - Math.abs(this.collective.nonCash - this.own.other)
+        }
     };
 
     @computed get totalOwn() {
         return {
-            nonCash: this.real.alpha - this.own.nonCash,
+            nonCash: this.real.alpha - Math.abs(this.own.nonCash),
             other: this.own.other
         };
     }
@@ -52,7 +55,7 @@ class Store {
         const ownOtherSum = this.own.other;
         const realTinkoff = this.real.tinkoff;
 
-        return realTinkoff - ownOtherSum - collectiveSum;
+        return realTinkoff - Math.abs(ownOtherSum - collectiveSum);
     }
 }
 
