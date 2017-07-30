@@ -20,9 +20,9 @@ class Store {
 
     @computed get return() {
         return {
-            cash: this.real.cash - Math.abs(this.collective.cash - this.own.cash),
-            tinkoff: this.real.tinkoff - Math.abs(this.collective.nonCash - this.own.other),
-            alpha: this.real.alpha - Math.abs(this.own.nonCash)
+            cash: this.real.cash - this.collective.cash - this.own.cash,
+            tinkoff: this.real.tinkoff - this.collective.nonCash - this.own.other,
+            alpha: this.real.alpha - this.own.nonCash
         }
     };
 
