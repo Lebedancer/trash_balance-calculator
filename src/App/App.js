@@ -3,12 +3,11 @@ import Section from '../components/common/Section';
 import RealData from '../components/RealData';
 import ReturnData from '../components/ReturnData';
 import CollectiveBalance from '../components/balance/CollectiveBalance';
-import CollectiveResult from '../components/result/CollectiveResult';
+// import CollectiveResult from '../components/result/CollectiveResult';
 import OwnBalance from '../components/balance/OwnBalance';
-import OwnResult from '../components/result/OwnResult';
+// import OwnResult from '../components/result/OwnResult';
 import style from './style.less';
 
-import DevTools from 'mobx-react-devtools';
 import Store from '../Store'
 
 class App extends Component {
@@ -20,7 +19,6 @@ class App extends Component {
     render() {
         return (
             <div className={style.app}>
-                <DevTools />
                 <Section isBlock={true}  title="Есть сейчас">
                     <RealData store={this.store}/>
                 </Section>
