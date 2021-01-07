@@ -6,5 +6,5 @@ COPY . .
 
 RUN yarn && yarn build
 
-EXPOSE 9000
+EXPOSE 9000 9001
 CMD [ "node", "server.js" ]
